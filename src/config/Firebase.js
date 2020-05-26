@@ -12,4 +12,16 @@ const app = firebase.initializeApp({
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
 
+const app2 = firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE2_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE2_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE2_DATABASE,
+  projectId: process.env.REACT_APP_FIREBASE2_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE2_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE2_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE2_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE2_MEASUREMENT_ID,
+});
+
 export default app;
+export default app2;
