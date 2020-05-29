@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import app from "../config/Firebase";
-import { AuthContext } from "../config/Auth";
+import { AuthContext } from "../../config/Auth";
+import { app } from "../../config/Firebase";
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -12,7 +12,7 @@ const Login = ({ history }) => {
         await app
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+        history.push("/home");
       } catch (error) {
         alert(error);
       }
@@ -23,12 +23,12 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
     <div>
-      <h1>Log In</h1>
+      <h1>Log In Primary</h1>
       <form onSubmit={handleLogin}>
         <label>
           Email

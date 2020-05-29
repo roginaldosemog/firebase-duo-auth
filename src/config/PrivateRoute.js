@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     <Route
       {...rest}
       render={(routeProps) =>
-        !!currentUser ? (
+        !!currentUser && currentUser?.m === "primary" ? (
           <RouteComponent {...routeProps} />
         ) : (
           <Redirect to={"/login"} />
@@ -18,4 +18,20 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+const PrivateRoute2 = ({ component: RouteComponent, ...rest }) => {
+  const { currentUser2 } = useContext(AuthContext);
+  return (
+    <Route
+      {...rest}
+      render={(routeProps) =>
+        !!currentUser2 && currentUser2?.m === "secondary" ? (
+          <RouteComponent {...routeProps} />
+        ) : (
+          <Redirect to={"/login2"} />
+        )
+      }
+    />
+  );
+};
+
+export { PrivateRoute, PrivateRoute2 };
